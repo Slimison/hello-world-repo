@@ -11,5 +11,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Cowsay program, create and open dragon.txt
-        run: ./ascii-script.sh
-
+        run: |
+          ls -la
+          chmod +x ascii-script.sh
+          ./ascii-script.sh
+          ls -la
