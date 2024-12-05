@@ -12,9 +12,9 @@ jobs:
 
       - name: Install Cowsay program, create and open dragon.txt
         run: |
-        sudo apt-get install cowsay -y
-        cowsay -f dragon "Run for cover, I am a Dragon RAWR ! ! !" >> dragon.txt
-        grep -i "dragon" dragon.txt
-        cat dragon.txt
-        ls -larth
+          sudo apt-get install cowsay -y
+          cowsay -f dragon "Run for cover, I am a Dragon RAWR ! ! !" >> dragon.txt
+          grep -i "dragon" dragon.txt
+          cat dragon.txt
+          ls -larth
 
