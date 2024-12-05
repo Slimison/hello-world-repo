@@ -13,8 +13,7 @@ jobs:
       - name: List the dir
         run: |
           ls -la
-          
-          
+                 
 
   ascii_job_run_script:
     needs: ascii_list_job
@@ -53,7 +52,7 @@ jobs:
           ls -la
           cat dragon.txt
 
-   deploy_job_3:
+  deploy_job_3:
     needs: ascii__list_job
     runs-on: ubuntu-latest
     steps:
