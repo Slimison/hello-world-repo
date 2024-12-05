@@ -16,7 +16,7 @@ jobs:
           chmod +x ascii-script.sh
           
 
-  ascii_job:
+  ascii_job_run_script:
     needs: ascii_list_job
     runs-on: ubuntu-latest
     steps:
@@ -26,4 +26,15 @@ jobs:
       - name: Install Cowsay program, create and open dragon.txt
         run: |
           ./ascii-script.sh
+          
+
+   ascii__list_job:
+    needs: ascii_list_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Cowsay program, create and open dragon.txt
+        run: |
           ls -la
