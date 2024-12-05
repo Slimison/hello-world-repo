@@ -10,31 +10,63 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install Cowsay program, create and open dragon.txt
+      - name: List the dir
         run: |
           ls -la
-          chmod +x ascii-script.sh
+          
           
 
   ascii_job_run_script:
     needs: ascii_list_job
     runs-on: ubuntu-latest
+
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Install Cowsay program, create and open dragon.txt
         run: |
+          chmod +x ascii-script.sh
           ./ascii-script.sh
+      
+      - name: upload the dragon.txt
+        uses: actions/upload-artifact@v4
+        with:      
+          name: dragon-text-file    
+          path: dragon.txt
+          if-no-files-found: error    
           
 
   ascii__list_job:
     needs: ascii_job_run_script
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Download the dragon.txt
+        uses: actions/download-artifact@v4
+        with:      
+          name: dragon-text-file    
+
 
       - name: Install Cowsay program, create and open dragon.txt
         run: |
           ls -la
+          cat dragon.txt
+
+   deploy_job_3:
+    needs: ascii__list_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the dragon.txt
+        uses: actions/download-artifact@v4
+        with:      
+          name: dragon-text-file   
+
+      - name: Read the dragon.txt
+        run:  grep -i "dragon" dragon.txt
+
+
+      - name: Install Cowsay program, create and open dragon.txt
+        run: |
+          ls -la
+          cat dragon.txt
