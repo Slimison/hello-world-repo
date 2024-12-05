@@ -28,7 +28,7 @@ jobs:
           ./ascii-script.sh
           
 
-   ascii__list_job:
+  ascii__list_job:
     needs: ascii_job_run_script
     runs-on: ubuntu-latest
     steps:
