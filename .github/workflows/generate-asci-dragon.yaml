@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  ascii list job:
+  ascii_list_job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -17,7 +17,7 @@ jobs:
           
 
   ascii_job:
-    needs: ascii list job
+    needs: ascii_list_job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
